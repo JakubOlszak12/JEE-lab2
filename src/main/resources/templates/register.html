@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: head">
+</head>
+<body>
+<div th:include="layout :: navigationPanel"></div>
+<h1>Rejestracja:</h1>
+<form th:action="@{/register}" method="POST" th:object="${user}">
+    <div th:style="'color:red'" th:if="${#fields.hasErrors('name')}" class="error-message" th:errors="*{name}"></div>
+    <label th:style="'font-weight:bold'" for="imie">Imię:</label>
+    <input type="text" id="imie" th:field="*{name}" placeholder="Imię"/> <br/>
+
+    <div th:style="'color:red'"  th:if="${#fields.hasErrors('surname')}" class="error-message" th:errors="*{surname}"></div>
+    <label th:style="'font-weight:bold'" for="nazwisko">Nazwisko:</label>
+    <input type="text" id="nazwisko" th:field="*{surname}" placeholder="Nazwisko"/> <br/>
+
+    <div th:style="'color:red'" th:if="${#fields.hasErrors('login')}" class="error-message" th:errors="*{login}"></div>
+    <label th:style="'font-weight:bold'" for="login">Login:</label>
+    <input type="text" id="login" th:field="*{login}" placeholder="Login"/> <br/>
+
+    <div th:style="'color:red'" th:if="${#fields.hasErrors('password')}" class="error-message" th:errors="*{password}"></div>
+    <label th:style="'font-weight:bold'" for="haslo">Hasło:</label>
+    <input type="password" id="haslo" th:field="*{password}" placeholder="Hasło"/> <br/>
+
+    <button type="submit">Zarejestruj się</button>
+</form>
+<div th:include="layout :: footer"></div>
+</body>
+</html>
